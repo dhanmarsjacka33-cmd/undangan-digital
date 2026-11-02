@@ -3,96 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan Faiq & Nurul</title>
+    <meta name="description" content="Undangan Pernikahan Faiq & Nurul — 21 Desember 2024">
+    <meta property="og:title" content="Faiq & Nurul — Wedding Invitation">
+    <meta property="og:image" content="background.jpg">
+    <title>Faiq & Nurul — Wedding Invitation</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts: Contoh font elegan. Ganti sesuai desain Canva Anda. -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- 🎵 Pemutar Musik Latar -->
-    <audio id="musikLatar" loop>
-        <source src="lagu.mp3" type="audio/mpeg">
-    </audio>
-    <button id="tombolMusik" class="musik-btn" onclick="kontrolMusik()">🔊 Putar Musik</button>
+<!-- 🎬 COVER SCREEN -->
+<div id="cover" class="cover">
+    <div class="cover-content">
+        <p class="cover-label">The Wedding Of</p>
+        <h1 class="cover-names">Faiq & Nurul</h1>
+        <p class="cover-date">21 Desember 2024</p>
+        <button id="bukaUndangan" class="btn-open">Buka Undangan</button>
+    </div>
+</div>
 
-    <!-- 🏠 Bagian Sampul / Hero -->
-    <section id="sampul" class="section hero">
-        <div class="overlay"></div>
-        <div class="hero-content">
-            <p class="undangan-teks">The Wedding Of</p>
-            <h1 class="nama-pasangan">Faiq & Nurul</h1>
-            <p class="tanggal-acara">21 Desember 2024</p>
-            <a href="#mempelai" class="tombol-buka">Buka Undangan</a>
+<!-- 🎵 MUSIK -->
+<audio id="musikLatar" loop>
+    <source src="lagu.mp3" type="audio/mpeg">
+</audio>
+<button id="tombolMusik" class="music-btn" onclick="kontrolMusik()" aria-label="Kontrol musik">
+    <span id="musikIkon">🎵</span>
+</button>
+
+<!-- 🧭 NAVIGASI -->
+<nav class="nav" id="nav">
+    <a href="#mempelai">Mempelai</a>
+    <a href="#acara">Acara</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#hadiah">Hadiah</a>
+    <a href="#rsvp">RSVP</a>
+    <a href="#ucapan">Ucapan</a>
+</nav>
+
+<!-- 🏠 HERO -->
+<section id="hero" class="hero">
+    <div class="hero-content">
+        <p>بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+        <p>Assalamu'alaikum Warahmatullahi Wabarakatuh</p>
+        <p>Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan putra-putri kami:</p>
+    </div>
+</section>
+
+<!-- 💑 MEMPELAI -->
+<section id="mempelai" class="section">
+    <h2 class="section-title">Mempelai</h2>
+    <div class="pasangan">
+        <div class="profil">
+            <div class="foto-wrapper"><img src="foto-faiq.jpg" alt="Faiq"></div>
+            <h3>Faiq</h3>
+            <p>Putra dari<br>Bapak ... & Ibu ...</p>
         </div>
-    </section>
-
-    <!-- 💑 Bagian Mempelai -->
-    <section id="mempelai" class="section mempelai">
-        <h2 class="judul-section">Mempelai</h2>
-        <div class="pasangan-container">
-            <div class="profil">
-                <h3>Faiq</h3>
-                <p>Putra dari Bapak ... & Ibu ...</p>
-            </div>
-            <div class="dan"> & </div>
-            <div class="profil">
-                <h3>Nurul</h3>
-                <p>Putri dari Bapak ... & Ibu ...</p>
-            </div>
+        <div class="ampersand">&</div>
+        <div class="profil">
+            <div class="foto-wrapper"><img src="foto-nurul.jpg" alt="Nurul"></div>
+            <h3>Nurul</h3>
+            <p>Putri dari<br>Bapak ... & Ibu ...</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- 📅 Bagian Acara -->
-    <section id="acara" class="section acara">
-        <h2 class="judul-section">Detail Acara</h2>
-        <div class="acara-container">
-            <div class="kartu-acara">
-                <h3>Akad Nikah</h3>
-                <p><strong>Hari/Tanggal:</strong> Sabtu, 21 Desember 2024</p>
-                <p><strong>Waktu:</strong> 09.00 WIB - Selesai</p>
-                <p><strong>Tempat:</strong> [Nama Tempat]</p>
-            </div>
-            <div class="kartu-acara">
-                <h3>Resepsi</h3>
-                <p><strong>Hari/Tanggal:</strong> Sabtu, 21 Desember 2024</p>
-                <p><strong>Waktu:</strong> 11.00 WIB - Selesai</p>
-                <p><strong>Tempat:</strong> [Nama Tempat]</p>
-            </div>
+<!-- ⏱️ COUNTDOWN -->
+<section class="countdown-section">
+    <h2 class="section-title">Menuju Hari Bahagia</h2>
+    <div class="countdown" id="countdown">
+        <div class="countdown-box"><span id="hari">00</span><small>Hari</small></div>
+        <div class="countdown-box"><span id="jam">00</span><small>Jam</small></div>
+        <div class="countdown-box"><span id="menit">00</span><small>Menit</small></div>
+        <div class="countdown-box"><span id="detik">00</span><small>Detik</small></div>
+    </div>
+</section>
+
+<!-- 📅 ACARA + PETA -->
+<section id="acara" class="section">
+    <h2 class="section-title">Detail Acara</h2>
+    <div class="acara-grid">
+        <div class="kartu-acara">
+            <h3>Akad Nikah</h3>
+            <p class="acara-tanggal">Sabtu, 21 Desember 2024</p>
+            <p>09.00 WIB – Selesai</p>
+            <p class="acara-lokasi">[Nama Gedung]<br>[Alamat lengkap]</p>
         </div>
-        <!-- Ganti tautan di bawah dengan URL Google Maps lokasi acara Anda -->
-        <a href="https://maps.google.com" target="_blank" class="tombol-lokasi">Lihat Lokasi di Maps</a>
-    </section>
+        <div class="kartu-acara">
+            <h3>Resepsi</h3>
+            <p class="acara-tanggal">Sabtu, 21 Desember 2024</p>
+            <p>11.00 WIB – Selesai</p>
+            <p class="acara-lokasi">[Nama Gedung]<br>[Alamat lengkap]</p>
+        </div>
+    </div>
 
-    <!-- 🖼️ Bagian Galeri (Placeholder) -->
-    <section id="galeri" class="section galeri">
-        <h2 class="judul-section">Galeri</h2>
-        <p class="teks-placeholder">[Tempat untuk foto-foto pasangan]</p>
-        <!-- Anda bisa menambahkan tag <img> di sini nanti -->
-    </section>
+    <!-- GANTI src dengan URL embed Google Maps lokasi Anda (Maps → Bagikan → Sematkan peta) -->
+    <div class="maps-wrapper">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.81956135000001!3d-6.194741395509847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTEnNDEuMSJTIDEwNsKwNDknMTAuNCJF!5e0!3m2!1sid!2sid!4v1234567890"
+            width="100%" height="350" style="border:0; border-radius: 16px;"
+            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Lokasi Acara"></iframe>
+        <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn-primary">Buka di Google Maps</a>
+    </div>
+</section>
 
-    <!-- 🎁 Bagian Hadiah Digital -->
-    <section id="hadiah" class="section hadiah">
-        <h2 class="judul-section">Hadiah Digital</h2>
-        <p>Doa restu Anda merupakan hadiah terindah bagi kami. Namun jika ingin memberi tanda kasih, dapat melalui:</p>
+<!-- 🖼️ GALERI -->
+<section id="galeri" class="section">
+    <h2 class="section-title">Galeri</h2>
+    <div class="galeri-grid">
+        <div class="galeri-item"><img src="galeri-1.jpg" alt="Foto 1" onclick="bukaLightbox(this.src)"></div>
+        <div class="galeri-item"><img src="galeri-2.jpg" alt="Foto 2" onclick="bukaLightbox(this.src)"></div>
+        <div class="galeri-item"><img src="galeri-3.jpg" alt="Foto 3" onclick="bukaLightbox(this.src)"></div>
+        <div class="galeri-item"><img src="galeri-4.jpg" alt="Foto 4" onclick="bukaLightbox(this.src)"></div>
+    </div>
+</section>
+
+<!-- 🎁 HADIAH DIGITAL -->
+<section id="hadiah" class="section">
+    <h2 class="section-title">Hadiah Digital</h2>
+    <p class="section-desc">Doa restu Anda adalah hadiah terindah. Namun jika ingin memberi tanda kasih, dapat melalui:</p>
+    <div class="rekening-list">
         <div class="rekening">
-            <p><strong>Bank BCA</strong></p>
-            <p>No. Rekening: 1234567890</p>
+            <h4>Bank BCA</h4>
+            <p class="norek">1234567890</p>
             <p>a.n. Faiq</p>
+            <button class="btn-copy" onclick="salinTeks('1234567890', this)">Salin Nomor</button>
         </div>
-    </section>
+        <div class="rekening">
+            <h4>Bank Mandiri</h4>
+            <p class="norek">9876543210</p>
+            <p>a.n. Nurul</p>
+            <button class="btn-copy" onclick="salinTeks('9876543210', this)">Salin Nomor</button>
+        </div>
+    </div>
+</section>
 
-    <!-- ✍️ Bagian Ucapan / RSVP -->
-    <section id="ucapan" class="section ucapan">
-        <h2 class="judul-section">Ucapan & Doa</h2>
-        <!-- Ganti nomor WhatsApp di bawah dengan nomor Anda (awali 62, tanpa 0) -->
-        <a href="https://wa.me/6281234567890?text=Selamat%20untuk%20Faiq%20%26%20Nurul" target="_blank" class="tombol-wa">Kirim Ucapan via WhatsApp</a>
-    </section>
+<!-- ✅ RSVP -->
+<section id="rsvp" class="section">
+    <h2 class="section-title">Konfirmasi Kehadiran</h2>
+    <form id="rsvpForm" class="form-card">
+        <label>Nama Lengkap
+            <input type="text" id="rsvp-nama" required placeholder="Masukkan nama Anda">
+        </label>
+        <label>Kehadiran
+            <select id="rsvp-hadir" required>
+                <option value="">Pilih...</option>
+                <option value="Hadir">Hadir</option>
+                <option value="Tidak Hadir">Tidak Hadir</option>
+                <option value="Masih Ragu">Masih Ragu</option>
+            </select>
+        </label>
+        <label>Jumlah Orang
+            <input type="number" id="rsvp-jumlah" min="1" value="1">
+        </label>
+        <label>Pesan (opsional)
+            <textarea id="rsvp-pesan" rows="3" placeholder="Ucapan & doa..."></textarea>
+        </label>
+        <button type="submit" class="btn-primary">Kirim Konfirmasi</button>
+    </form>
+</section>
 
-    <footer>
-        <p>Terima kasih atas doa dan restunya.</p>
-    </footer>
+<!-- 💌 UCAPAN -->
+<section id="ucapan" class="section">
+    <h2 class="section-title">Ucapan & Doa</h2>
+    <div id="daftarUcapan" class="ucapan-list"></div>
+    <p class="small-info">💡 Ucapan tersimpan di perangkat Anda. Untuk fitur real-time lintas tamu, lihat saran pengembangan di bawah.</p>
+</section>
 
-    <script src="script.js"></script>
+<!-- 🔍 LIGHTBOX -->
+<div id="lightbox" class="lightbox" onclick="tutupLightbox()">
+    <img id="lightbox-img" src="" alt="">
+</div>
+
+<footer class="footer">
+    <p class="footer-nama">Faiq & Nurul</p>
+    <p>Terima kasih atas doa dan restunya ❤️</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
