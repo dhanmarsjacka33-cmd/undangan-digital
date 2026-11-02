@@ -2,14 +2,6 @@
 // ===== FUNGSI NOTIFIKASI TOAST =====
 function tampilkanToast(pesan) {
     const toast = document.getElementById("toast");
-    toast.textContent = pesan;
-    toast.classList.add("show");
-    setTimeout(() => { toast.classList.remove("show"); }, 3000);
-}
-
-// ===== FUNGSI NOTIFIKASI TOAST =====
-function tampilkanToast(pesan) {
-    const toast = document.getElementById("toast");
     if(toast) {
         toast.textContent = pesan;
         toast.classList.add("show");
@@ -81,6 +73,13 @@ function updateCountdown() {
     document.getElementById('jam').textContent   = String(h).padStart(2, '0');
     document.getElementById('menit').textContent = String(m).padStart(2, '0');
     document.getElementById('detik').textContent = String(s).padStart(2, '0');
+
+    // Progress Bar
+    const tanggalMulai = new Date('2026-01-01T00:00:00').getTime(); 
+    const totalDurasi = tanggalAcara - tanggalMulai;
+    const progress = ((now - tanggalMulai) / totalDurasi) * 100;
+    const progressBar = document.getElementById('progressBar');
+    if(progressBar) progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
 }
 setInterval(updateCountdown, 1000);
 updateCountdown();
@@ -155,7 +154,7 @@ window.addEventListener('load', () => {
                 snapshot.forEach((doc) => {
                     const u = doc.data();
                     const item = document.createElement('div');
-                    item.className = 'ucapan-item';
+                    item.className = 'ucapan-item fade-in-section is-visible';
                     item.innerHTML = `
                         <strong>${u.nama}</strong>
                         <p>${u.pesan || '<em>Tidak ada pesan</em>'}</p>
@@ -195,9 +194,8 @@ window.addEventListener('load', () => {
                     });
 
                     status.textContent = '';
-formBukuTamu.reset();
-tampilkanToast('Buku tamu berhasil dikirim! Terima kasih.');
                     formBukuTamu.reset();
+                    tampilkanToast('Buku tamu berhasil dikirim! Terima kasih.');
                 } catch (error) {
                     console.error("Error: ", error);
                     status.textContent = 'Gagal mengirim. Coba lagi.';
@@ -226,8 +224,7 @@ tampilkanToast('Buku tamu berhasil dikirim! Terima kasih.');
                 });
                 
                 e.target.reset();
-tampilkanToast('Konfirmasi kehadiran berhasil dikirim!');
-document.getElementById('ucapan').scrollIntoView({ behavior: 'smooth' });
+                tampilkanToast('Konfirmasi kehadiran berhasil dikirim!');
                 document.getElementById('ucapan').scrollIntoView({ behavior: 'smooth' });
             } catch (error) {
                 console.error("Error RSVP: ", error);

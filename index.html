@@ -43,16 +43,12 @@
 <!-- 🎬 AMPLOP (COVER) - Menutupi seluruh layar -->
 <div id="envelopeWrapper" class="envelope-wrapper">
     <div id="envelope" class="envelope">
-        <div class="flap"></div>
-        <div class="pocket"></div>
-        <div class="letter">
-            <div class="cover-content">
-                <p class="cover-label">The Wedding Of</p>
-                <h1 class="cover-names">Nurul & Faiq</h1>
-                <p class="cover-date">09 November 2026</p>
-                <p id="tamuPersonal" class="cover-guest"></p>
-                <button id="bukaUndangan" class="btn-open">Buka Undangan</button>
-            </div>
+        <div class="cover-content">
+            <p class="cover-label">The Wedding Of</p>
+            <h1 class="cover-names">Nurul & Faiq</h1>
+            <p class="cover-date">09 November 2026</p>
+            <p id="tamuPersonal" class="cover-guest"></p>
+            <button id="bukaUndangan" class="btn-open">Buka Undangan</button>
         </div>
     </div>
 </div>
@@ -118,6 +114,9 @@
 <section class="countdown-section">
     <h2 class="section-title">Save The Date</h2>
     <p style="text-align: center; font-weight: bold; font-size: 1.2rem; margin-bottom: 1rem;">Senin, 09 November 2026</p>
+    <div class="progress-container" style="width: 80%; max-width: 400px; height: 8px; background: var(--bg-alt); border-radius: 10px; margin: 1.5rem auto; overflow: hidden;">
+        <div id="progressBar" style="height: 100%; width: 0%; background: var(--primary); transition: width 1s ease;"></div>
+    </div>
     <div class="countdown" id="countdown">
         <div class="countdown-box"><span id="hari">00</span><small>Hari</small></div>
         <div class="countdown-box"><span id="jam">00</span><small>Jam</small></div>
@@ -157,7 +156,7 @@
         </div>
         <div class="maps-text">
             <h3>🗺️ MAPS :</h3>
-            <a href="https://maps.app.goo.gl/pdv5BjLXyqUJ9J7E8?g_st=aw" target="_blank" rel="noopener" class="btn-primary">Petunjuk Arah</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Jetak+Rt+004+Rw+001,+Wedung,+Demak" target="_blank" rel="noopener" class="btn-primary">Petunjuk Arah</a>
         </div>
     </div>
 </section>

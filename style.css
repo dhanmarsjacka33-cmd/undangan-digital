@@ -35,7 +35,7 @@ body {
     justify-content: center;
     transition: opacity 0.8s ease, visibility 0.8s;
     /* Ganti dengan gambar floral latar belakang Anda jika ada */
-    background-image: url('background.jpg'); 
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('background.jpg'); 
     background-size: cover;
     background-position: center;
 }
@@ -82,7 +82,14 @@ body {
     padding: 0.5rem; border-radius: 8px; font-size: 0.9rem;
     display: none; /* Disembunyikan jika tidak ada parameter ?to= */
 }
-.cover-guest.active { display: block; }
+.cover-guest.active { 
+    display: inline-block; 
+    font-size: 1.1rem; 
+    letter-spacing: 1px; 
+    background: rgba(255,255,255,0.7); 
+    padding: 0.5rem 1rem; 
+    border-radius: 20px; 
+}
 .btn-open {
     padding: 0.9rem 2.5rem; 
     background: var(--primary); 
