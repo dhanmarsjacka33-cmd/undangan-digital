@@ -1,4 +1,12 @@
 // ===== ELEMEN =====
+// ===== FUNGSI NOTIFIKASI TOAST =====
+function tampilkanToast(pesan) {
+    const toast = document.getElementById("toast");
+    toast.textContent = pesan;
+    toast.classList.add("show");
+    setTimeout(() => { toast.classList.remove("show"); }, 3000);
+}
+
 const envelopeWrapper = document.getElementById('envelopeWrapper');
 const envelope = document.getElementById('envelope');
 const bukaBtn = document.getElementById('bukaUndangan');
@@ -161,7 +169,9 @@ window.addEventListener('load', () => {
                         waktu: new Date().toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' })
                     });
 
-                    status.textContent = 'Terima kasih! Buku tamu terkirim.';
+                    status.textContent = '';
+formBukuTamu.reset();
+tampilkanToast('Buku tamu berhasil dikirim! Terima kasih.');
                     formBukuTamu.reset();
                 } catch (error) {
                     console.error("Error: ", error);
@@ -191,6 +201,8 @@ window.addEventListener('load', () => {
                 });
                 
                 e.target.reset();
+tampilkanToast('Konfirmasi kehadiran berhasil dikirim!');
+document.getElementById('ucapan').scrollIntoView({ behavior: 'smooth' });
                 document.getElementById('ucapan').scrollIntoView({ behavior: 'smooth' });
             } catch (error) {
                 console.error("Error RSVP: ", error);
