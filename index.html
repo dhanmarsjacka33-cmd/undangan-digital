@@ -3,25 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Undangan Pernikahan Faiq & Nurul — 21 Desember 2024">
-    <meta property="og:title" content="Faiq & Nurul — Wedding Invitation">
+    <meta name="description" content="Undangan Pernikahan Nurul & Faiq — 09 November 2026">
+    <meta property="og:title" content="Nurul & Faiq — Wedding Invitation">
     <meta property="og:image" content="background.jpg">
-    <title>Faiq & Nurul — Wedding Invitation</title>
+    <title>Nurul & Faiq — Wedding Invitation</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <!-- FIREBASE SDK & CONFIG (SUDAH TERISI) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD_js7K3UD3QEmI7XtjdaLeRUo1ERuuAqw",
+            authDomain: "undangan-digital-19d8a.firebaseapp.com",
+            projectId: "undangan-digital-19d8a",
+            storageBucket: "undangan-digital-19d8a.firebasestorage.app",
+            messagingSenderId: "783695586987",
+            appId: "1:783695586987:web:5cbb68a18baaa8f58979ee",
+            measurementId: "G-30R490RPK7"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+        const analytics = getAnalytics(app);
+
+        window.firebaseApp = { db, storage, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, ref, uploadBytes, getDownloadURL };
+    </script>
 </head>
 <body>
 
-<!-- 🎬 COVER SCREEN -->
-<div id="cover" class="cover">
-    <div class="cover-content">
-        <p class="cover-label">The Wedding Of</p>
-        <h1 class="cover-names">Faiq & Nurul</h1>
-        <p class="cover-date">21 Desember 2024</p>
-        <button id="bukaUndangan" class="btn-open">Buka Undangan</button>
+<!-- 🎬 AMPLOP (COVER) - Menutupi seluruh layar -->
+<div id="envelopeWrapper" class="envelope-wrapper">
+    <div id="envelope" class="envelope">
+        <div class="flap"></div>
+        <div class="pocket"></div>
+        <div class="letter">
+            <div class="cover-content">
+                <p class="cover-label">The Wedding Of</p>
+                <h1 class="cover-names">Nurul & Faiq</h1>
+                <p class="cover-date">09 November 2026</p>
+                <p id="tamuPersonal" class="cover-guest"></p>
+                <button id="bukaUndangan" class="btn-open">Buka Undangan</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -52,27 +84,40 @@
     </div>
 </section>
 
+<!-- 📖 AYAT AL-QURAN -->
+<section class="section ayat-section">
+    <div class="ayat-konten">
+        <div class="cincin-icon">💍</div>
+        <p class="ayat-arab">وَالَّذِيْنَ يَقُوْلُوْنَ رَبَّنَا هَبْ لَنَا مِنْ اَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ اَعْيُنٍ وَّاجْعَلْنَا لِلْمُتَّقِيْنَ اِمَامًا</p>
+        <p class="ayat-terjemah">"Dan orang-orang yang berkata, 'Ya Tuhan kami, anugerahkanlah kepada kami pasangan kami dan keturunan kami sebagai penyenang hati (kami), dan jadikanlah kami pemimpin bagi orang-orang yang bertakwa."</p>
+        <p class="ayat-sumber">(Q.S Al Furqan : 74)</p>
+    </div>
+</section>
+
 <!-- 💑 MEMPELAI -->
 <section id="mempelai" class="section">
     <h2 class="section-title">Mempelai</h2>
     <div class="pasangan">
         <div class="profil">
-            <div class="foto-wrapper"><img src="foto-faiq.jpg" alt="Faiq"></div>
-            <h3>Faiq</h3>
-            <p>Putra dari<br>Bapak ... & Ibu ...</p>
+            <div class="foto-wrapper"><img src="foto-nurul.jpg" alt="Nurul" loading="lazy"></div>
+            <h3>Nurul Nafisatun Nagiyah</h3>
+            <p>Putri dari Bapak Suparno<br>dan Ibu Siti Sunarti</p>
+            <p class="alamat">Jetak Rt. 04 Rw. 01 Wedung Demak</p>
         </div>
         <div class="ampersand">&</div>
         <div class="profil">
-            <div class="foto-wrapper"><img src="foto-nurul.jpg" alt="Nurul"></div>
-            <h3>Nurul</h3>
-            <p>Putri dari<br>Bapak ... & Ibu ...</p>
+            <div class="foto-wrapper"><img src="foto-faiq.jpg" alt="Faiq" loading="lazy"></div>
+            <h3>Ahmad Faiq Shofie</h3>
+            <p>Putra dari Bapak Dirjo<br>dan Ibu Sriyati</p>
+            <p class="alamat">Ds. Pasir Rt. 03 Rw. 03 Mijen Demak</p>
         </div>
     </div>
 </section>
 
 <!-- ⏱️ COUNTDOWN -->
 <section class="countdown-section">
-    <h2 class="section-title">Menuju Hari Bahagia</h2>
+    <h2 class="section-title">Save The Date</h2>
+    <p style="text-align: center; font-weight: bold; font-size: 1.2rem; margin-bottom: 1rem;">Senin, 09 November 2026</p>
     <div class="countdown" id="countdown">
         <div class="countdown-box"><span id="hari">00</span><small>Hari</small></div>
         <div class="countdown-box"><span id="jam">00</span><small>Jam</small></div>
@@ -85,28 +130,35 @@
 <section id="acara" class="section">
     <h2 class="section-title">Detail Acara</h2>
     <div class="acara-grid">
-        <div class="kartu-acara">
-            <h3>Akad Nikah</h3>
-            <p class="acara-tanggal">Sabtu, 21 Desember 2024</p>
-            <p>09.00 WIB – Selesai</p>
-            <p class="acara-lokasi">[Nama Gedung]<br>[Alamat lengkap]</p>
+        <div class="kartu-acara dark-card">
+            <div class="icon-ring">💍</div>
+            <h3>AKAD NIKAH</h3>
+            <p class="acara-tanggal">Dilaksanakan pukul 09.00 WIB</p>
+            <hr>
+            <div class="icon-loc">🏠</div>
+            <h4>LOKASI</h4>
+            <p><strong>Kediaman mempelai wanita</strong><br>Jetak Rt 004 Rw 001, Wedung, Demak</p>
         </div>
-        <div class="kartu-acara">
-            <h3>Resepsi</h3>
-            <p class="acara-tanggal">Sabtu, 21 Desember 2024</p>
-            <p>11.00 WIB – Selesai</p>
-            <p class="acara-lokasi">[Nama Gedung]<br>[Alamat lengkap]</p>
+        <div class="kartu-acara dark-card">
+            <div class="icon-ring">💍</div>
+            <h3>RESEPSI</h3>
+            <p class="acara-tanggal">Pukul 10.00 WIB - Selesai</p>
+            <hr>
+            <div class="icon-loc">🏠</div>
+            <h4>LOKASI</h4>
+            <p><strong>Kediaman mempelai wanita</strong><br>Jetak Rt 004 Rw 001, Wedung, Demak</p>
         </div>
     </div>
 
-    <!-- GANTI src dengan URL embed Google Maps lokasi Anda (Maps → Bagikan → Sematkan peta) -->
+    <!-- PETA & QR CODE -->
     <div class="maps-wrapper">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.81956135000001!3d-6.194741395509847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTEnNDEuMSJTIDEwNsKwNDknMTAuNCJF!5e0!3m2!1sid!2sid!4v1234567890"
-            width="100%" height="350" style="border:0; border-radius: 16px;"
-            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            title="Lokasi Acara"></iframe>
-        <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn-primary">Buka di Google Maps</a>
+        <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://maps.app.goo.gl/pdv5BjLXyqUJ9J7E8?g_st=aw" alt="QR Code Maps" loading="lazy">
+        </div>
+        <div class="maps-text">
+            <h3>🗺️ MAPS :</h3>
+            <a href="https://maps.app.goo.gl/pdv5BjLXyqUJ9J7E8?g_st=aw" target="_blank" rel="noopener" class="btn-primary">Petunjuk Arah</a>
+        </div>
     </div>
 </section>
 
@@ -114,35 +166,38 @@
 <section id="galeri" class="section">
     <h2 class="section-title">Galeri</h2>
     <div class="galeri-grid">
-        <div class="galeri-item"><img src="galeri-1.jpg" alt="Foto 1" onclick="bukaLightbox(this.src)"></div>
-        <div class="galeri-item"><img src="galeri-2.jpg" alt="Foto 2" onclick="bukaLightbox(this.src)"></div>
-        <div class="galeri-item"><img src="galeri-3.jpg" alt="Foto 3" onclick="bukaLightbox(this.src)"></div>
-        <div class="galeri-item"><img src="galeri-4.jpg" alt="Foto 4" onclick="bukaLightbox(this.src)"></div>
+        <div class="galeri-item"><img src="galeri-1.jpg" alt="Foto 1" loading="lazy" onclick="bukaLightbox(this.src)"></div>
+        <div class="galeri-item"><img src="galeri-2.jpg" alt="Foto 2" loading="lazy" onclick="bukaLightbox(this.src)"></div>
+        <div class="galeri-item"><img src="galeri-3.jpg" alt="Foto 3" loading="lazy" onclick="bukaLightbox(this.src)"></div>
+        <div class="galeri-item"><img src="galeri-4.jpg" alt="Foto 4" loading="lazy" onclick="bukaLightbox(this.src)"></div>
     </div>
 </section>
 
 <!-- 🎁 HADIAH DIGITAL -->
 <section id="hadiah" class="section">
-    <h2 class="section-title">Hadiah Digital</h2>
-    <p class="section-desc">Doa restu Anda adalah hadiah terindah. Namun jika ingin memberi tanda kasih, dapat melalui:</p>
+    <h2 class="section-title">Wedding Gift</h2>
+    <div class="gift-icon">💐</div>
+    <p class="section-desc">Doa Restu Anda merupakan karunia yang sangat berarti bagi kami. Dan jika memberi adalah ungkapan tanda kasih, Anda dapat memberi kado secara cashless.</p>
+    
     <div class="rekening-list">
-        <div class="rekening">
-            <h4>Bank BCA</h4>
-            <p class="norek">1234567890</p>
-            <p>a.n. Faiq</p>
-            <button class="btn-copy" onclick="salinTeks('1234567890', this)">Salin Nomor</button>
+        <div class="rekening mandiri-card">
+            <div class="bank-logo">mandiri</div>
+            <p class="norek">60011377128</p>
+            <p>a.n. Ahmad Faiq Shofie</p>
+            <button class="btn-copy" onclick="salinTeks('60011377128', this)">Salin Nomor</button>
         </div>
-        <div class="rekening">
-            <h4>Bank Mandiri</h4>
-            <p class="norek">9876543210</p>
-            <p>a.n. Nurul</p>
-            <button class="btn-copy" onclick="salinTeks('9876543210', this)">Salin Nomor</button>
-        </div>
+    </div>
+
+    <div class="closing-text" style="text-align:center; margin-top: 3rem;">
+        <p>Atas kehadiran dan doa restu dari Bapak/Ibu/Saudara/i sekalian, kami mengucapkan Terima Kasih.</p>
+        <p style="font-family: 'Great Vibes', cursive; font-size: 2rem; margin-top: 1rem;">Wassalamu'alaikum Wr. Wb.</p>
+        <p style="margin-top: 2rem;">Kami yang berbahagia,</p>
+        <h3 style="font-family: 'Great Vibes', cursive; font-size: 3rem; color: var(--primary-dark);">Nurul & Faiq</h3>
     </div>
 </section>
 
 <!-- ✅ RSVP -->
-<section id="rsvp" class="section">
+<section id="rsvp" class="section" style="background: var(--bg-alt);">
     <h2 class="section-title">Konfirmasi Kehadiran</h2>
     <form id="rsvpForm" class="form-card">
         <label>Nama Lengkap
@@ -166,11 +221,23 @@
     </form>
 </section>
 
-<!-- 💌 UCAPAN -->
+<!-- 💌 UCAPAN & BUKU TAMU -->
 <section id="ucapan" class="section">
     <h2 class="section-title">Ucapan & Doa</h2>
+    
+    <!-- Buku Tamu Form -->
+    <div class="buku-tamu-form form-card" style="margin-bottom: 2rem;">
+        <h3 style="margin-bottom: 1rem; color: var(--primary-dark); text-align: center;">Buku Tamu Digital</h3>
+        <form id="formBukuTamu">
+            <label>Nama <input type="text" id="bt-nama" required placeholder="Nama Anda"></label>
+            <label>Pesan <textarea id="bt-pesan" rows="2" required placeholder="Ucapan & doa..."></textarea></label>
+            <label>Upload Foto (Opsional) <input type="file" id="bt-foto" accept="image/*"></label>
+            <button type="submit" class="btn-primary" style="width: 100%;">Kirim Buku Tamu</button>
+            <p id="statusUpload" style="text-align: center; font-size: 0.85rem; margin-top: 0.5rem; color: var(--primary-dark);"></p>
+        </form>
+    </div>
+
     <div id="daftarUcapan" class="ucapan-list"></div>
-    <p class="small-info">💡 </p>
 </section>
 
 <!-- 🔍 LIGHTBOX -->
@@ -179,7 +246,7 @@
 </div>
 
 <footer class="footer">
-    <p class="footer-nama">Faiq & Nurul</p>
+    <p class="footer-nama">Nurul & Faiq</p>
     <p>Terima kasih atas doa dan restunya ❤️</p>
 </footer>
 
