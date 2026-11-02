@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan Faiq & Nurul</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Contoh font elegan. Ganti sesuai desain Canva Anda. -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- 🎵 Pemutar Musik Latar -->
+    <audio id="musikLatar" loop>
+        <source src="lagu.mp3" type="audio/mpeg">
+    </audio>
+    <button id="tombolMusik" class="musik-btn" onclick="kontrolMusik()">🔊 Putar Musik</button>
+
+    <!-- 🏠 Bagian Sampul / Hero -->
+    <section id="sampul" class="section hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <p class="undangan-teks">The Wedding Of</p>
+            <h1 class="nama-pasangan">Faiq & Nurul</h1>
+            <p class="tanggal-acara">21 Desember 2024</p>
+            <a href="#mempelai" class="tombol-buka">Buka Undangan</a>
+        </div>
+    </section>
+
+    <!-- 💑 Bagian Mempelai -->
+    <section id="mempelai" class="section mempelai">
+        <h2 class="judul-section">Mempelai</h2>
+        <div class="pasangan-container">
+            <div class="profil">
+                <h3>Faiq</h3>
+                <p>Putra dari Bapak ... & Ibu ...</p>
+            </div>
+            <div class="dan"> & </div>
+            <div class="profil">
+                <h3>Nurul</h3>
+                <p>Putri dari Bapak ... & Ibu ...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📅 Bagian Acara -->
+    <section id="acara" class="section acara">
+        <h2 class="judul-section">Detail Acara</h2>
+        <div class="acara-container">
+            <div class="kartu-acara">
+                <h3>Akad Nikah</h3>
+                <p><strong>Hari/Tanggal:</strong> Sabtu, 21 Desember 2024</p>
+                <p><strong>Waktu:</strong> 09.00 WIB - Selesai</p>
+                <p><strong>Tempat:</strong> [Nama Tempat]</p>
+            </div>
+            <div class="kartu-acara">
+                <h3>Resepsi</h3>
+                <p><strong>Hari/Tanggal:</strong> Sabtu, 21 Desember 2024</p>
+                <p><strong>Waktu:</strong> 11.00 WIB - Selesai</p>
+                <p><strong>Tempat:</strong> [Nama Tempat]</p>
+            </div>
+        </div>
+        <!-- Ganti tautan di bawah dengan URL Google Maps lokasi acara Anda -->
+        <a href="https://maps.google.com" target="_blank" class="tombol-lokasi">Lihat Lokasi di Maps</a>
+    </section>
+
+    <!-- 🖼️ Bagian Galeri (Placeholder) -->
+    <section id="galeri" class="section galeri">
+        <h2 class="judul-section">Galeri</h2>
+        <p class="teks-placeholder">[Tempat untuk foto-foto pasangan]</p>
+        <!-- Anda bisa menambahkan tag <img> di sini nanti -->
+    </section>
+
+    <!-- 🎁 Bagian Hadiah Digital -->
+    <section id="hadiah" class="section hadiah">
+        <h2 class="judul-section">Hadiah Digital</h2>
+        <p>Doa restu Anda merupakan hadiah terindah bagi kami. Namun jika ingin memberi tanda kasih, dapat melalui:</p>
+        <div class="rekening">
+            <p><strong>Bank BCA</strong></p>
+            <p>No. Rekening: 1234567890</p>
+            <p>a.n. Faiq</p>
+        </div>
+    </section>
+
+    <!-- ✍️ Bagian Ucapan / RSVP -->
+    <section id="ucapan" class="section ucapan">
+        <h2 class="judul-section">Ucapan & Doa</h2>
+        <!-- Ganti nomor WhatsApp di bawah dengan nomor Anda (awali 62, tanpa 0) -->
+        <a href="https://wa.me/6281234567890?text=Selamat%20untuk%20Faiq%20%26%20Nurul" target="_blank" class="tombol-wa">Kirim Ucapan via WhatsApp</a>
+    </section>
+
+    <footer>
+        <p>Terima kasih atas doa dan restunya.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
