@@ -43,32 +43,37 @@ body {
 
 .envelope {
     position: relative;
-    width: 90%; max-width: 400px; height: 550px;
-    background: var(--white);
-    border-radius: 12px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    width: 88%; max-width: 380px; 
+    padding: 3.5rem 2rem;
+    background: rgba(255, 255, 255, 0.88); /* Efek Kaca Transparan */
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 24px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.15);
     display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
+    z-index: 10;
 }
-.envelope::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0;
-    height: 50%; background: var(--primary);
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-origin: top; z-index: 10;
+.envelope.open {
+    transform: scale(1.05) translateY(-10px);
+    opacity: 0; 
 }
-.envelope.open::before { transform: rotateX(180deg); }
 
 .cover-content {
-    text-align: center; padding: 2rem; position: relative; z-index: 5;
+    text-align: center; padding: 0; position: relative; z-index: 5;
 }
 .cover-label {
     font-family: 'Great Vibes', cursive; font-size: 1.8rem;
     color: var(--primary); margin-bottom: 0.5rem;
 }
 .cover-names {
-    font-family: 'Great Vibes', cursive; font-size: 3.5rem;
-    color: var(--primary-dark); margin-bottom: 0.5rem;
+    font-family: 'Great Vibes', cursive; 
+    font-size: 3.6rem;
+    color: var(--primary-dark); 
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.8);
 }
 .cover-date { font-size: 1rem; color: var(--text-light); margin-bottom: 2rem; }
 .cover-guest {
@@ -79,11 +84,23 @@ body {
 }
 .cover-guest.active { display: block; }
 .btn-open {
-    padding: 0.8rem 2rem; background: var(--primary); color: var(--white);
-    border: none; border-radius: 50px; cursor: pointer; font-size: 1rem;
-    transition: var(--transition);
+    padding: 0.9rem 2.5rem; 
+    background: var(--primary); 
+    color: var(--white);
+    border: 1px solid var(--accent); 
+    border-radius: 50px; 
+    cursor: pointer; 
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(92, 107, 62, 0.3);
+    transition: all 0.3s ease;
 }
-.btn-open:hover { background: var(--primary-dark); transform: translateY(-2px); }
+.btn-open:hover { 
+    background: var(--primary-dark); 
+    transform: translateY(-3px); 
+    box-shadow: 0 6px 20px rgba(92, 107, 62, 0.4);
+}
 
 /* ===== NAV & MUSIK ===== */
 .nav {
@@ -245,7 +262,6 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(92, 107, 62, 0.4);
 }
-.btn-primary:hover { background: var(--primary-dark); }
 
 /* ===== UCAPAN ===== */
 .ucapan-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
