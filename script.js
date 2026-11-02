@@ -7,6 +7,16 @@ function tampilkanToast(pesan) {
     setTimeout(() => { toast.classList.remove("show"); }, 3000);
 }
 
+// ===== FUNGSI NOTIFIKASI TOAST =====
+function tampilkanToast(pesan) {
+    const toast = document.getElementById("toast");
+    if(toast) {
+        toast.textContent = pesan;
+        toast.classList.add("show");
+        setTimeout(() => { toast.classList.remove("show"); }, 3000);
+    }
+}
+
 const envelopeWrapper = document.getElementById('envelopeWrapper');
 const envelope = document.getElementById('envelope');
 const bukaBtn = document.getElementById('bukaUndangan');
@@ -105,6 +115,21 @@ function bukaLightbox(src) {
 function tutupLightbox() {
     document.getElementById('lightbox').classList.remove('show');
 }
+
+// ===== ANIMASI FADE-IN SAAT SCROLL =====
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.section, .countdown-section').forEach(section => {
+    section.classList.add('fade-in-section');
+    observer.observe(section);
+});
 
 // ===== LOGIKA FIREBASE (RSVP & BUKU TAMU) =====
 // Menunggu script module Firebase di index.html selesai dimuat
