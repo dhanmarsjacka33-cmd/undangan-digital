@@ -106,14 +106,7 @@ function salinTeks(teks, btn) {
     }).catch(() => alert('Gagal menyalin. Silakan salin manual: ' + teks));
 }
 
-// ===== LIGHTBOX GALERI =====
-function bukaLightbox(src) {
-    document.getElementById('lightbox-img').src = src;
-    document.getElementById('lightbox').classList.add('show');
-}
-function tutupLightbox() {
-    document.getElementById('lightbox').classList.remove('show');
-}
+// (Fungsi Lightbox dihapus karena Galeri sudah dihilangkan)
 
 // ===== ANIMASI FADE-IN SAAT SCROLL =====
 const observer = new IntersectionObserver((entries) => {
@@ -139,69 +132,7 @@ window.addEventListener('load', () => {
             return;
         }
 
-        const { db, storage, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, ref, uploadBytes, getDownloadURL } = window.firebaseApp;
-        const daftarUcapan = document.getElementById('daftarUcapan');
-
-        // 1. RENDER UCAPAN REAL-TIME
-        function renderUcapanRealtime() {
-            const q = query(collection(db, 'ucapan'), orderBy('timestamp', 'desc'));
-            onSnapshot(q, (snapshot) => {
-                if (snapshot.empty) {
-                    daftarUcapan.innerHTML = '<p style="text-align:center; color:var(--text-light);">Belum ada ucapan. Jadilah yang pertama! 💌</p>';
-                    return;
-                }
-                daftarUcapan.innerHTML = '';
-                snapshot.forEach((doc) => {
-                    const u = doc.data();
-                    const item = document.createElement('div');
-                    item.className = 'ucapan-item fade-in-section is-visible';
-                    item.innerHTML = `
-                        <strong>${u.nama}</strong>
-                        <p>${u.pesan || '<em>Tidak ada pesan</em>'}</p>
-                        <span class="hadir-badge">${u.hadir}${u.jumlah > 1 ? ` • ${u.jumlah} orang` : ''}</span>
-                        <small style="display:block; margin-top:0.5rem; color:#888;">${u.waktu}</small>
-                    `;
-                    daftarUcapan.appendChild(item);
-                });
-            });
-        }
-        renderUcapanRealtime();
-
-        // 2. FORM BUKU TAMU (UPLOAD FOTO)
-        const formBukuTamu = document.getElementById('formBukuTamu');
-        if (formBukuTamu) {
-            formBukuTamu.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const nama = document.getElementById('bt-nama').value;
-                const pesan = document.getElementById('bt-pesan').value;
-                const file = document.getElementById('bt-foto').files[0];
-                const status = document.getElementById('statusUpload');
-
-                status.textContent = 'Mengirim...';
-
-                try {
-                    let fotoURL = '';
-                    if (file) {
-                        const storageRef = ref(storage, `buku-tamu/${Date.now()}_${file.name}`);
-                        const snapshot = await uploadBytes(storageRef, file);
-                        fotoURL = await getDownloadURL(snapshot.ref);
-                    }
-
-                    await addDoc(collection(db, 'ucapan'), {
-                        nama, pesan, fotoURL, hadir: "Hadir", jumlah: 1,
-                        timestamp: serverTimestamp(),
-                        waktu: new Date().toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' })
-                    });
-
-                    status.textContent = '';
-                    formBukuTamu.reset();
-                    tampilkanToast('Buku tamu berhasil dikirim! Terima kasih.');
-                } catch (error) {
-                    console.error("Error: ", error);
-                    status.textContent = 'Gagal mengirim. Coba lagi.';
-                }
-            });
-        }
+        const { db, collection, addDoc, serverTimestamp } = window.firebaseApp;
 
         // 3. FORM RSVP
         document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
@@ -225,7 +156,6 @@ window.addEventListener('load', () => {
                 
                 e.target.reset();
                 tampilkanToast('Konfirmasi kehadiran berhasil dikirim!');
-                document.getElementById('ucapan').scrollIntoView({ behavior: 'smooth' });
             } catch (error) {
                 console.error("Error RSVP: ", error);
                 alert("Gagal mengirim konfirmasi. Periksa koneksi internet Anda.");

@@ -65,10 +65,8 @@
 <nav class="nav" id="nav">
     <a href="#mempelai">Mempelai</a>
     <a href="#acara">Acara</a>
-    <a href="#galeri">Galeri</a>
     <a href="#hadiah">Hadiah</a>
     <a href="#rsvp">RSVP</a>
-    <a href="#ucapan">Ucapan</a>
 </nav>
 
 <!-- 🏠 HERO -->
@@ -161,16 +159,7 @@
     </div>
 </section>
 
-<!-- 🖼️ GALERI -->
-<section id="galeri" class="section">
-    <h2 class="section-title">Galeri</h2>
-    <div class="galeri-grid">
-        <div class="galeri-item"><img src="galeri-1.jpg" alt="Foto 1" loading="lazy" onclick="bukaLightbox(this.src)"></div>
-        <div class="galeri-item"><img src="galeri-2.jpg" alt="Foto 2" loading="lazy" onclick="bukaLightbox(this.src)"></div>
-        <div class="galeri-item"><img src="galeri-3.jpg" alt="Foto 3" loading="lazy" onclick="bukaLightbox(this.src)"></div>
-        <div class="galeri-item"><img src="galeri-4.jpg" alt="Foto 4" loading="lazy" onclick="bukaLightbox(this.src)"></div>
-    </div>
-</section>
+
 
 <!-- 🎁 HADIAH DIGITAL -->
 <section id="hadiah" class="section">
@@ -220,32 +209,10 @@
     </form>
 </section>
 
-<!-- 💌 UCAPAN & BUKU TAMU -->
-<section id="ucapan" class="section">
-    <h2 class="section-title">Ucapan & Doa</h2>
-    
-    <!-- Buku Tamu Form -->
-    <div class="buku-tamu-form form-card" style="margin-bottom: 2rem;">
-        <h3 style="margin-bottom: 1rem; color: var(--primary-dark); text-align: center;">Buku Tamu Digital</h3>
-        <form id="formBukuTamu">
-            <label>Nama <input type="text" id="bt-nama" required placeholder="Nama Anda"></label>
-            <label>Pesan <textarea id="bt-pesan" rows="2" required placeholder="Ucapan & doa..."></textarea></label>
-            <label>Upload Foto (Opsional) <input type="file" id="bt-foto" accept="image/*"></label>
-            <button type="submit" class="btn-primary" style="width: 100%;">Kirim Buku Tamu</button>
-            <p id="statusUpload" style="text-align: center; font-size: 0.85rem; margin-top: 0.5rem; color: var(--primary-dark);"></p>
-        </form>
-    </div>
 
-    <div id="daftarUcapan" class="ucapan-list"></div>
-</section>
 
-<!-- 🔍 LIGHTBOX -->
-<!-- 🔔 TOAST NOTIFIKASI -->
+<!--  TOAST NOTIFIKASI -->
 <div id="toast" class="toast">Pesan berhasil dikirim!</div>
-
-<div id="lightbox" class="lightbox" onclick="tutupLightbox()">
-    <img id="lightbox-img" src="" alt="">
-</div>
 
 <footer class="footer">
     <p class="footer-nama">Nurul & Faiq</p>
